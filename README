@@ -1,0 +1,20 @@
+python-twitter-examples
+------------------------------------------------------------------------
+
+A set of Python scripts to demonstrate interactions with the Twitter API
+via the Python Twitter Tools module:
+
+	http://mike.verdone.ca/twitter/
+
+This collection was developed for a laboratory in social data mining
+for the Digital Sociology, Digital Journalism and Creating Social Media
+MA courses at CAST London:
+
+	http://castlondon.com/
+
+For comments, updates and patch submissions, please contact:
+
+	Daniel Jones <d.jones@gold.ac.uk>
+	http://www.erase.net
+
+------------------------------------------------------------------------
