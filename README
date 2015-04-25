@@ -6,6 +6,13 @@ via the Python Twitter Tools module:
 
 	http://mike.verdone.ca/twitter/
 
+You will need to authenticate with Twitter to use these scripts. To do
+so, sign up for developer credentials and create a Twitter app here:
+
+	https://dev.twitter.com/apps/new
+
+Then add your consumer and access tokens to `credentials.py`.
+
 This collection was developed for a laboratory in social data mining
 for the Digital Sociology, Digital Journalism and Creating Social Media
 MA courses at the Centre for Creative and Social Technology, Goldsmiths,

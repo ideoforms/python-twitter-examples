@@ -1,42 +1,45 @@
 #!/usr/bin/python
 
 #-----------------------------------------------------------------------
-# twitter-search
-#  - performs a basic keyword search for tweets containing the keywords
-#    "lazy" and "dog"
+# twitter-tweet-rate
 #-----------------------------------------------------------------------
 
 from twitter import *
 from datetime import datetime
 
-created_at_format = "%a, %d %b %Y %H:%M:%S +0000"
+created_at_format = '%a %b %d %H:%M:%S +0000 %Y'
 
+#-----------------------------------------------------------------------
+# load our API credentials 
+#-----------------------------------------------------------------------
+config = {}
+execfile("config.py", config)
+
+#-----------------------------------------------------------------------
 # create twitter API object
-twitter = Twitter()
+#-----------------------------------------------------------------------
+twitter = Twitter(
+		        auth = OAuth(config["access_key"], config["access_secret"], config["consumer_key"], config["consumer_secret"]))
 
+#-----------------------------------------------------------------------
 # perform a basic search 
 # twitter API docs: https://dev.twitter.com/docs/api/1/get/search
+#-----------------------------------------------------------------------
 terms = "pink elephants"
-query = twitter.search(q = terms)
-num_results = len(query["results"])
+query = twitter.search.tweets(q = terms)
+results = query["statuses"]
                   
-# make a list of the differences between the time-stamps of each tweet
-t_diffs = []
-for i in range(0, num_results, 2):
-    if i < num_results - 1:
-        this_result = query["results"][i]
-        next_result = query["results"][i + 1]
+#-----------------------------------------------------------------------
+# take the timestamp of the first and last tweets in these results,
+# and calculate the average time between tweets.
+#-----------------------------------------------------------------------
+first_timestamp = datetime.strptime(results[0]["created_at"], created_at_format)
+last_timestamp = datetime.strptime(results[-1]["created_at"], created_at_format)
+total_dt = (first_timestamp - last_timestamp).total_seconds()
+mean_dt = total_dt / len(results)
 
-        this_result_timestamp = datetime.strptime(this_result["created_at"], created_at_format)
-        next_result_timestamp = datetime.strptime(next_result["created_at"], created_at_format)
-
-        diff = this_result_timestamp - next_result_timestamp
-        
-        t_diffs.append(diff.total_seconds())
-
+#-----------------------------------------------------------------------
 # print the average of the differences
-print "Average tweeting rate for '%s' between %s and %s: %.3fs" %\
-      (terms,
-       query["results"][num_results - 1]["created_at"],
-       query["results"][0]["created_at"],
-       float(sum(t_diffs)) / float(len(t_diffs)))
+#-----------------------------------------------------------------------
+print "Average tweeting rate for '%s' between %s and %s: %.3fs" % (terms, results[-1]["created_at"], results[ 0]["created_at"], mean_dt)
+

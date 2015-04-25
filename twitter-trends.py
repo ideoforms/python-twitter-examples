@@ -7,16 +7,28 @@
 
 from twitter import *
 
-# create twitter API object
-twitter = Twitter()
+#-----------------------------------------------------------------------
+# load our API credentials 
+#-----------------------------------------------------------------------
+config = {}
+execfile("config.py", config)
 
+#-----------------------------------------------------------------------
+# create twitter API object
+#-----------------------------------------------------------------------
+twitter = Twitter(
+		        auth = OAuth(config["access_key"], config["access_secret"], config["consumer_key"], config["consumer_secret"]))
+
+
+#-----------------------------------------------------------------------
 # retrieve global trends.
 # other localised trends can be specified by looking up WOE IDs:
 #   http://developer.yahoo.com/geo/geoplanet/
 # twitter API docs: https://dev.twitter.com/docs/api/1/get/trends/%3Awoeid
-results = twitter.trends._woeid(_woeid = 1)
+#-----------------------------------------------------------------------
+results = twitter.trends.place(_id = 23424975)
 
-print "GLOBAL TRENDS"
+print "UK Trends"
 
 for location in results:
 	for trend in location["trends"]:

@@ -1,28 +1,33 @@
 #!/usr/bin/python
 
 #-----------------------------------------------------------------------
-# twitter-oauth-timeline:
+# twitter-hoome-timeline:
 #  - uses the Twitter API and OAuth to log in as your username,
-#    and lists the latest 50 tweets from your feed.
+#    and lists the latest 50 tweets from people you are following 
 #-----------------------------------------------------------------------
 
 from twitter import *
 
-# these tokens are necessary for user authentication
-# (created within the twitter developer API pages)
-consumer_key = "XxXxXxxXXXxxxxXXXxXX"
-consumer_secret = "xXXXXXXXXxxxxXxXXxxXxxXXxXxXxxxxXxXXxxxXXx"
-access_key = "XXXXXXXX-xxXXxXXxxXxxxXxXXxXxXxXxxxXxxxxXxXXxXxxXX"
-access_secret = "XxXXXXXXXXxxxXXXxXXxXxXxxXXXXXxXxxXXXXx"
+#-----------------------------------------------------------------------
+# load our API credentials 
+#-----------------------------------------------------------------------
+config = {}
+execfile("config.py", config)
 
+#-----------------------------------------------------------------------
 # create twitter API object
-auth = OAuth(access_key, access_secret, consumer_key, consumer_secret)
-twitter = Twitter(auth = auth)
+#-----------------------------------------------------------------------
+twitter = Twitter(
+		        auth = OAuth(config["access_key"], config["access_secret"], config["consumer_key"], config["consumer_secret"]))
 
+#-----------------------------------------------------------------------
 # request my home timeline
 # twitter API docs: https://dev.twitter.com/docs/api/1/get/statuses/home_timeline
+#-----------------------------------------------------------------------
 statuses = twitter.statuses.home_timeline(count = 50)
 
+#-----------------------------------------------------------------------
 # loop through each of my statuses, and print its content
+#-----------------------------------------------------------------------
 for status in statuses:
 	print "(%s) @%s %s" % (status["created_at"], status["user"]["screen_name"], status["text"])
