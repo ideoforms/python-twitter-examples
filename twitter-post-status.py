@@ -1,23 +1,27 @@
 #!/usr/bin/python
 
 #-----------------------------------------------------------------------
-# twitter-search
-#  - performs a basic keyword search for tweets containing the keywords
-#    "lazy" and "dog"
+# twitter-oauth-post
+#  - posts a status message to your timeline
 #-----------------------------------------------------------------------
 
 from twitter import *
 
+# what should our new status be?
+new_status = "testing testing"
+
+# these tokens are necessary for user authentication
+# (created within the twitter developer API pages)
+consumer_key = "XXXxXxXxXXXXxxXxXXxXX"
+consumer_secret = "xXXXXxxXxXXXXxXxXXXxxXxxXxxxxXXXXXxxxXxxxX"
+access_key = "XXXXXXXXX-XXXXxXxxXXXXxXXXXxXXXXxXXxxxXXXXXXXXxXXX"
+access_secret = "XXXXxXXXXxXxXxxxxXxXXXxXxxxxXxXXxXXXxX"
+
 # create twitter API object
-twitter = Twitter()
+auth = OAuth(access_key, access_secret, consumer_key, consumer_secret)
+twitter = Twitter(auth = auth)
 
-# perform a basic search 
-# twitter API docs: https://dev.twitter.com/docs/api/1/get/search
-query = twitter.search(q = "lazy dog")
-
-# print how quickly the search completed
-print "Search complete (%f seconds)" % (query["completed_in"])
-
-# loop through each of my statuses, and print its content
-for result in query["results"]:
-	print "(%s) @%s %s" % (result["created_at"], result["from_user"], result["text"])
+# post a new status
+# twitter API docs: https://dev.twitter.com/docs/api/1/post/statuses/update
+results = twitter.statuses.update(status = new_status)
+print "updated status: %s" % new_status
