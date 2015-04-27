@@ -13,12 +13,12 @@ so, sign up for developer credentials and create a Twitter app here:
 
 Then add your consumer and access tokens to `config.py`.
 
-This collection was developed for a laboratory in social data mining
-for the Digital Sociology, Digital Journalism and Creating Social Media
-MA courses at the Centre for Creative and Social Technology, Goldsmiths,
-University of London:
+This collection was first developed for a 2012 laboratory in social data
+mining for the MA/MSc Digital Sociology, Digital Journalism and Creating Social
+Media courses at the Centre for Creative and Social Technology, Goldsmiths,
+University of London.
 
-	http://castlondon.com/
+	http://www.gold.ac.uk/pg/ma-msc-digital-sociology/
 
 For comments, updates and patch submissions, please contact:
 
