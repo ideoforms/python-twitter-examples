@@ -35,4 +35,4 @@ results = twitter.statuses.user_timeline(screen_name = user)
 # loop through each status item, and print its content.
 #-----------------------------------------------------------------------
 for status in results:
-	print "(%s) %s" % (status["created_at"], status["text"])
+	print "(%s) %s" % (status["created_at"], status["text"].encode("ascii", "ignore"))
