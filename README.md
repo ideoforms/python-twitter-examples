@@ -1,15 +1,28 @@
-python-twitter-examples
-------------------------------------------------------------------------
+# Python Twitter Examples
+
 
 A set of Python scripts to demonstrate interactions with the Twitter API
 via the Python Twitter Tools module:
 
 	http://mike.verdone.ca/twitter/
 
+## Usage
+
 You will need to authenticate with Twitter to use these scripts. To do
 so, sign up for developer credentials and create a Twitter app here:
 
 	https://dev.twitter.com/apps/new
+
+You can create access credentials directly through Twitter's web
+interface, authorized under the username you used to create the app.
+
+If you want your application to act on behalf of other users (for example,
+to post on behalf of several usernames), you'll need to authorize each
+separately. To be guided through this process, run:
+
+	python twitter-authorize.py
+
+## History
 
 Then add your consumer and access tokens to `config.py`.
 
