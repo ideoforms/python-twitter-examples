@@ -2,8 +2,8 @@
 
 #-----------------------------------------------------------------------
 # twitter-search-geo
-#  - performs a search for tweets close to New Cross, and outputs
-#    them to a CSV file.
+#  - performs a search for tweets close to New Cross, London,
+#    and outputs them to a CSV file.
 #-----------------------------------------------------------------------
 
 from twitter import *
@@ -14,7 +14,7 @@ import csv
 latitude = 51.474144	# geographical centre of search
 longitude = -0.035401	# geographical centre of search
 max_range = 1 			# search range in kilometres
-num_results = 500		# minimum results to obtain
+num_results = 50		# minimum results to obtain
 outfile = "output.csv"
 
 #-----------------------------------------------------------------------
@@ -51,7 +51,7 @@ last_id = None
 while result_count <  num_results:
 	#-----------------------------------------------------------------------
 	# perform a search based on latitude and longitude
-	# twitter API docs: https://dev.twitter.com/docs/api/1/get/search
+	# twitter API docs: https://dev.twitter.com/rest/reference/get/search/tweets
 	#-----------------------------------------------------------------------
 	query = twitter.search.tweets(q = "", geocode = "%f,%f,%dkm" % (latitude, longitude, max_range), count = 100, max_id = last_id)
 
@@ -66,7 +66,9 @@ while result_count <  num_results:
 			latitude = result["geo"]["coordinates"][0]
 			longitude = result["geo"]["coordinates"][1]
 
+			#-----------------------------------------------------------------------
 			# now write this row to our CSV file
+			#-----------------------------------------------------------------------
 			row = [ user, text, latitude, longitude ]
 			csvwriter.writerow(row)
 			result_count += 1

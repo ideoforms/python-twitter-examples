@@ -21,7 +21,7 @@ twitter = Twitter(
 
 #-----------------------------------------------------------------------
 # perform a user search 
-# twitter API docs: https://dev.twitter.com/docs/api/1/get/users/search
+# twitter API docs: https://dev.twitter.com/rest/reference/get/users/search
 #-----------------------------------------------------------------------
 results = twitter.users.search(q = '"New Cross"')
 

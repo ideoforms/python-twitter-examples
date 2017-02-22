@@ -23,7 +23,7 @@ twitter = Twitter(
 
 #-----------------------------------------------------------------------
 # perform a basic search 
-# twitter API docs: https://dev.twitter.com/docs/api/1/get/search
+# twitter API docs: https://dev.twitter.com/rest/reference/get/search/tweets
 #-----------------------------------------------------------------------
 terms = "pink elephants"
 query = twitter.search.tweets(q = terms)

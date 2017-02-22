@@ -26,7 +26,7 @@ username = "ideoforms"
 
 #-----------------------------------------------------------------------
 # perform a basic search 
-# twitter API docs: https://dev.twitter.com/docs/api/1/get/friends/ids
+# twitter API docs: https://dev.twitter.com/rest/reference/get/friends/ids
 #-----------------------------------------------------------------------
 query = twitter.friends.ids(screen_name = username)
 
@@ -45,7 +45,7 @@ for n in range(0, len(query["ids"]), 100):
 
 	#-----------------------------------------------------------------------
 	# create a subquery, looking up information about these users
-	# twitter API docs: https://dev.twitter.com/docs/api/1/get/users/lookup
+	# twitter API docs: https://dev.twitter.com/rest/reference/get/users/lookup
 	#-----------------------------------------------------------------------
 	subquery = twitter.users.lookup(user_id = ids)
 
@@ -53,5 +53,5 @@ for n in range(0, len(query["ids"]), 100):
 		#-----------------------------------------------------------------------
 		# now print out user info, starring any users that are Verified.
 		#-----------------------------------------------------------------------
-		print " [%s] %s" % ("*" if user["verified"] else " ", user["screen_name"])
+		print " [%s] %s - %s" % ("*" if user["verified"] else " ", user["screen_name"], user["location"])
 

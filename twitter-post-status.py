@@ -26,7 +26,7 @@ twitter = Twitter(
 
 #-----------------------------------------------------------------------
 # post a new status
-# twitter API docs: https://dev.twitter.com/docs/api/1/post/statuses/update
+# twitter API docs: https://dev.twitter.com/rest/reference/post/statuses/update
 #-----------------------------------------------------------------------
 results = twitter.statuses.update(status = new_status)
 print "updated status: %s" % new_status

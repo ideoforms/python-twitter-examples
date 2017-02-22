@@ -24,7 +24,7 @@ twitter = Twitter(
 # retrieve global trends.
 # other localised trends can be specified by looking up WOE IDs:
 #   http://developer.yahoo.com/geo/geoplanet/
-# twitter API docs: https://dev.twitter.com/docs/api/1/get/trends/%3Awoeid
+# twitter API docs: https://dev.twitter.com/rest/reference/get/trends/place
 #-----------------------------------------------------------------------
 results = twitter.trends.place(_id = 23424975)
 

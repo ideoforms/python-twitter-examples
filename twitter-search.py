@@ -24,7 +24,7 @@ twitter = Twitter(
 #-----------------------------------------------------------------------
 # perform a basic search 
 # Twitter API docs:
-# https://dev.twitter.com/docs/api/1/get/search
+# https://dev.twitter.com/rest/reference/get/search/tweets
 #-----------------------------------------------------------------------
 query = twitter.search.tweets(q = "lazy dog")
 

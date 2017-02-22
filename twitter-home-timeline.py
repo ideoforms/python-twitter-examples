@@ -22,9 +22,10 @@ twitter = Twitter(
 
 #-----------------------------------------------------------------------
 # request my home timeline
-# twitter API docs: https://dev.twitter.com/docs/api/1/get/statuses/home_timeline
+# twitter API docs: https://dev.twitter.com/rest/reference/get/statuses/home_timeline
 #-----------------------------------------------------------------------
 statuses = twitter.statuses.home_timeline(count = 50)
+print statuses
 
 #-----------------------------------------------------------------------
 # loop through each of my statuses, and print its content

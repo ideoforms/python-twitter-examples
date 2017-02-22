@@ -27,7 +27,7 @@ target = "lewisrichard"
 
 #-----------------------------------------------------------------------
 # perform the API query
-# twitter API docs: https://dev.twitter.com/docs/api/1/get/friendships/show
+# twitter API docs: https://dev.twitter.com/rest/reference/get/friendships/show
 #-----------------------------------------------------------------------
 result = twitter.friendships.show(source_screen_name = source,
                                   target_screen_name = target)

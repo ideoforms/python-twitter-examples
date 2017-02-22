@@ -10,7 +10,7 @@ from twitter import *
 #-----------------------------------------------------------------------
 # the list of users that we want to examine
 #-----------------------------------------------------------------------
-users = [ "ideoforms", "GoldsmithsLEU", "mocost" ]
+users = [ "ideoforms", "hrtbps", "mocost" ]
 
 #-----------------------------------------------------------------------
 # load our API credentials 
@@ -33,7 +33,7 @@ for user in users:
 
 	#-----------------------------------------------------------------------
 	# ...retrieve all of the lists they own.
-	# twitter API docs: https://dev.twitter.com/docs/api/1/get/lists
+	# twitter API docs: https://dev.twitter.com/rest/reference/get/lists/list
 	#-----------------------------------------------------------------------
 	result = twitter.lists.list(screen_name = user)
 	for list in result:
