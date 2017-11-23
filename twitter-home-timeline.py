@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 #-----------------------------------------------------------------------
-# twitter-hoome-timeline:
+# twitter-home-timeline:
 #  - uses the Twitter API and OAuth to log in as your username,
 #    and lists the latest 50 tweets from people you are following 
 #-----------------------------------------------------------------------
