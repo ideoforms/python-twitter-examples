@@ -18,21 +18,24 @@ num_results = 50        # minimum results to obtain
 outfile = "output.csv"
 
 #-----------------------------------------------------------------------
-# load our API credentials 
+# load our API credentials
 #-----------------------------------------------------------------------
-config = {}
-execfile("config.py", config)
+import sys
+sys.path.append(".")
+import config
 
 #-----------------------------------------------------------------------
 # create twitter API object
 #-----------------------------------------------------------------------
-twitter = Twitter(
-                auth = OAuth(config["access_key"], config["access_secret"], config["consumer_key"], config["consumer_secret"]))
+twitter = Twitter(auth = OAuth(config.access_key,
+                  config.access_secret,
+                  config.consumer_key,
+                  config.consumer_secret))
 
 #-----------------------------------------------------------------------
 # open a file to write (mode "w"), and create a CSV writer object
 #-----------------------------------------------------------------------
-csvfile = file(outfile, "w")
+csvfile = open(outfile, "w")
 csvwriter = csv.writer(csvfile)
 
 #-----------------------------------------------------------------------
@@ -77,12 +80,12 @@ while result_count <  num_results:
     #-----------------------------------------------------------------------
     # let the user know where we're up to
     #-----------------------------------------------------------------------
-    print "got %d results" % result_count
+    print("got %d results" % result_count)
 
 #-----------------------------------------------------------------------
 # we're all finished, clean up and go home.
 #-----------------------------------------------------------------------
 csvfile.close()
 
-print "written to %s" % outfile
+print("written to %s" % outfile)
 

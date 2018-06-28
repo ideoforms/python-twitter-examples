@@ -20,15 +20,20 @@ username = "nplus7"
 sleep_time = 1
 
 #-----------------------------------------------------------------------
-# load our API credentials 
+# load our API credentials
 #-----------------------------------------------------------------------
-config = {}
-execfile("config.py", config)
+import sys
+sys.path.append(".")
+import config
 
 #-----------------------------------------------------------------------
-# create twitter API object
+# create TwitterStream streaming API object, and standard Twitter
+# object to post replies.
 #-----------------------------------------------------------------------
-auth = OAuth(config["access_key"], config["access_secret"], config["consumer_key"], config["consumer_secret"])
+auth = OAuth(config.access_key,
+             config.access_secret,
+             config.consumer_key,
+             config.consumer_secret)
 twitter = Twitter(auth = auth)
 stream = TwitterStream(domain = "userstream.twitter.com", auth = auth, secure = True)
 
@@ -51,7 +56,7 @@ for tweet in tweet_iter:
     mentioned_users = [ mention["screen_name"] for mention in mentions ]
 
     if username in mentioned_users:
-        print "thanking @%s for the mention" % tweet["user"]["screen_name"]
+        print("thanking @%s for the mention" % tweet["user"]["screen_name"])
 
         #-----------------------------------------------------------------------
         # update our status with a thank you message directed at the source.
@@ -60,8 +65,8 @@ for tweet in tweet_iter:
         status = "@%s thanks for the mention" % tweet["user"]["screen_name"]
         try:
             twitter.statuses.update(status = status)
-        except Exception, e:
-            print " - failed (maybe a duplicate?): %s" % e
+        except Exception as e:
+            print(" - failed (maybe a duplicate?): %s" % e)
 
     time.sleep(sleep_time)
 

@@ -10,16 +10,19 @@ from datetime import datetime
 created_at_format = '%a %b %d %H:%M:%S +0000 %Y'
 
 #-----------------------------------------------------------------------
-# load our API credentials 
+# load our API credentials
 #-----------------------------------------------------------------------
-config = {}
-execfile("config.py", config)
+import sys
+sys.path.append(".")
+import config
 
 #-----------------------------------------------------------------------
 # create twitter API object
 #-----------------------------------------------------------------------
-twitter = Twitter(
-                auth = OAuth(config["access_key"], config["access_secret"], config["consumer_key"], config["consumer_secret"]))
+twitter = Twitter(auth = OAuth(config.access_key,
+                  config.access_secret,
+                  config.consumer_key,
+                  config.consumer_secret))
 
 #-----------------------------------------------------------------------
 # perform a basic search 
@@ -41,5 +44,5 @@ mean_dt = total_dt / len(results)
 #-----------------------------------------------------------------------
 # print the average of the differences
 #-----------------------------------------------------------------------
-print "Average tweeting rate for '%s' between %s and %s: %.3fs" % (terms, results[-1]["created_at"], results[ 0]["created_at"], mean_dt)
+print("Average tweeting rate for '%s' between %s and %s: %.3fs" % (terms, results[-1]["created_at"], results[ 0]["created_at"], mean_dt))
 

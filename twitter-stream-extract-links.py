@@ -9,15 +9,19 @@
 from twitter import *
 
 #-----------------------------------------------------------------------
-# load our API credentials 
+# load our API credentials
 #-----------------------------------------------------------------------
-config = {}
-execfile("config.py", config)
+import sys
+sys.path.append(".")
+import config
 
 #-----------------------------------------------------------------------
-# create twitter API object
+# create twitter streaming API object
 #-----------------------------------------------------------------------
-auth = OAuth(config["access_key"], config["access_secret"], config["consumer_key"], config["consumer_secret"])
+auth = OAuth(config.access_key,
+             config.access_secret,
+             config.consumer_key,
+             config.consumer_secret)
 stream = TwitterStream(auth = auth, secure = True)
 
 #-----------------------------------------------------------------------
@@ -31,6 +35,6 @@ for tweet in tweet_iter:
     #-----------------------------------------------------------------------
     # print out the contents, and any URLs found inside
     #-----------------------------------------------------------------------
-    print "(%s) @%s %s" % (tweet["created_at"], tweet["user"]["screen_name"], tweet["text"])
+    print("(%s) @%s %s" % (tweet["created_at"], tweet["user"]["screen_name"], tweet["text"]))
     for url in tweet["entities"]["urls"]:
-        print " - found URL: %s" % url["expanded_url"]
+        print(" - found URL: %s" % url["expanded_url"])

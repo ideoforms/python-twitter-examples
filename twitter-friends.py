@@ -10,16 +10,17 @@ from twitter import *
 #-----------------------------------------------------------------------
 # load our API credentials 
 #-----------------------------------------------------------------------
-config = {}
-exec(compile(open("config.py").read(), "config.py", 'exec'), config)
+import sys
+sys.path.append(".")
+import config
 
 #-----------------------------------------------------------------------
 # create twitter API object
 #-----------------------------------------------------------------------
-twitter = Twitter(auth = OAuth(config["access_key"],
-                  config["access_secret"],
-                  config["consumer_key"],
-                  config["consumer_secret"]))
+twitter = Twitter(auth = OAuth(config.access_key,
+                  config.access_secret,
+                  config.consumer_key,
+                  config.consumer_secret))
 
 #-----------------------------------------------------------------------
 # this is the user whose friends we will list

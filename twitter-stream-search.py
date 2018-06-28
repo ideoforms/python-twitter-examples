@@ -23,15 +23,19 @@ from termcolor import colored
 from email.utils import parsedate
 
 #-----------------------------------------------------------------------
-# load our API credentials 
+# load our API credentials
 #-----------------------------------------------------------------------
-config = {}
-execfile("config.py", config)
+import sys
+sys.path.append(".")
+import config
 
 #-----------------------------------------------------------------------
-# create twitter API object
+# create twitter streaming API object
 #-----------------------------------------------------------------------
-auth = OAuth(config["access_key"], config["access_secret"], config["consumer_key"], config["consumer_secret"])
+auth = OAuth(config.access_key,
+             config.access_secret,
+             config.consumer_key,
+             config.consumer_secret)
 stream = TwitterStream(auth = auth, secure = True)
 
 #-----------------------------------------------------------------------
@@ -61,5 +65,5 @@ for tweet in tweet_iter:
     text_colored = fill(text_colored, 80, initial_indent = indent, subsequent_indent = indent)
 
     # now output our tweet
-    print "(%s) @%s" % (time_colored, user_colored)
-    print "%s" % (text_colored)
+    print("(%s) @%s" % (time_colored, user_colored))
+    print("%s" % (text_colored))
