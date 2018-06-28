@@ -17,7 +17,7 @@ execfile("config.py", config)
 # create twitter API object
 #-----------------------------------------------------------------------
 twitter = Twitter(
-		        auth = OAuth(config["access_key"], config["access_secret"], config["consumer_key"], config["consumer_secret"]))
+                auth = OAuth(config["access_key"], config["access_secret"], config["consumer_key"], config["consumer_secret"]))
 
 
 #-----------------------------------------------------------------------
@@ -31,5 +31,5 @@ results = twitter.trends.place(_id = 23424975)
 print "UK Trends"
 
 for location in results:
-	for trend in location["trends"]:
-		print " - %s" % trend["name"]
+    for trend in location["trends"]:
+        print " - %s" % trend["name"]

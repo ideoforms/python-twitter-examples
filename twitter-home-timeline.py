@@ -18,7 +18,7 @@ execfile("config.py", config)
 # create twitter API object
 #-----------------------------------------------------------------------
 twitter = Twitter(
-		        auth = OAuth(config["access_key"], config["access_secret"], config["consumer_key"], config["consumer_secret"]))
+                auth = OAuth(config["access_key"], config["access_secret"], config["consumer_key"], config["consumer_secret"]))
 
 #-----------------------------------------------------------------------
 # request my home timeline
@@ -31,4 +31,4 @@ print statuses
 # loop through each of my statuses, and print its content
 #-----------------------------------------------------------------------
 for status in statuses:
-	print "(%s) @%s %s" % (status["created_at"], status["user"]["screen_name"], status["text"])
+    print "(%s) @%s %s" % (status["created_at"], status["user"]["screen_name"], status["text"])

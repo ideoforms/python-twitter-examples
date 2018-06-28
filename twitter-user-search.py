@@ -17,7 +17,7 @@ execfile("config.py", config)
 # create twitter API object
 #-----------------------------------------------------------------------
 twitter = Twitter(
-		auth = OAuth(config["access_key"], config["access_secret"], config["consumer_key"], config["consumer_secret"]))
+        auth = OAuth(config["access_key"], config["access_secret"], config["consumer_key"], config["consumer_secret"]))
 
 #-----------------------------------------------------------------------
 # perform a user search 
@@ -29,4 +29,4 @@ results = twitter.users.search(q = '"New Cross"')
 # loop through each of the users, and print their details
 #-----------------------------------------------------------------------
 for user in results:
-	print "@%s (%s): %s" % (user["screen_name"], user["name"], user["location"])
+    print "@%s (%s): %s" % (user["screen_name"], user["name"], user["location"])
