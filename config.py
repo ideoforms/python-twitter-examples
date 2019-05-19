@@ -1,7 +1,7 @@
 #--------------------------------------------------------------------------------
 # These tokens are needed for user authentication.
 # Credentials can be generated via Twitter's Application Management:
-#	https://apps.twitter.com/app/new
+#	https://developer.twitter.com/en/apps
 #--------------------------------------------------------------------------------
 
 consumer_key = "XxXxXxxXXXxxxxXXXxXX"
