@@ -4,14 +4,12 @@
 # twitter-following
 #  - lists all of the accounts that a given user is following
 #-----------------------------------------------------------------------
-
 from twitter import *
+import sys
 
 #-----------------------------------------------------------------------
 # load our API credentials 
 #-----------------------------------------------------------------------
-import sys
-
 sys.path.append(".")
 import config
 
