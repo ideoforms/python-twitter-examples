@@ -12,23 +12,24 @@ from twitter import *
 # load our API credentials
 #-----------------------------------------------------------------------
 import sys
+
 sys.path.append(".")
 import config
 
 #-----------------------------------------------------------------------
 # create twitter API object
 #-----------------------------------------------------------------------
-twitter = Twitter(auth = OAuth(config.access_key,
-                  config.access_secret,
-                  config.consumer_key,
-                  config.consumer_secret))
+twitter = Twitter(auth=OAuth(config.access_key,
+                             config.access_secret,
+                             config.consumer_key,
+                             config.consumer_secret))
 
 #-----------------------------------------------------------------------
 # perform a basic search 
 # Twitter API docs:
 # https://dev.twitter.com/rest/reference/get/search/tweets
 #-----------------------------------------------------------------------
-query = twitter.search.tweets(q = "lazy dog")
+query = twitter.search.tweets(q="lazy dog")
 
 #-----------------------------------------------------------------------
 # How long did this query take?

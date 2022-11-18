@@ -23,6 +23,7 @@ sleep_time = 1
 # load our API credentials
 #-----------------------------------------------------------------------
 import sys
+
 sys.path.append(".")
 import config
 
@@ -34,8 +35,8 @@ auth = OAuth(config.access_key,
              config.access_secret,
              config.consumer_key,
              config.consumer_secret)
-twitter = Twitter(auth = auth)
-stream = TwitterStream(domain = "userstream.twitter.com", auth = auth, secure = True)
+twitter = Twitter(auth=auth)
+stream = TwitterStream(domain="userstream.twitter.com", auth=auth, secure=True)
 
 #-----------------------------------------------------------------------
 # iterate over tweets matching this filter text
@@ -53,7 +54,7 @@ for tweet in tweet_iter:
     # are we mentioned within this tweet?
     #-----------------------------------------------------------------------
     mentions = tweet["entities"]["user_mentions"]
-    mentioned_users = [ mention["screen_name"] for mention in mentions ]
+    mentioned_users = [mention["screen_name"] for mention in mentions]
 
     if username in mentioned_users:
         print("thanking @%s for the mention" % tweet["user"]["screen_name"])
@@ -64,9 +65,8 @@ for tweet in tweet_iter:
         #-----------------------------------------------------------------------
         status = "@%s thanks for the mention" % tweet["user"]["screen_name"]
         try:
-            twitter.statuses.update(status = status)
+            twitter.statuses.update(status=status)
         except Exception as e:
             print(" - failed (maybe a duplicate?): %s" % e)
 
     time.sleep(sleep_time)
-

@@ -12,6 +12,7 @@ from twitter import *
 # load our API credentials
 #-----------------------------------------------------------------------
 import sys
+
 sys.path.append(".")
 import config
 
@@ -22,14 +23,14 @@ auth = OAuth(config.access_key,
              config.access_secret,
              config.consumer_key,
              config.consumer_secret)
-stream = TwitterStream(auth = auth, secure = True)
+stream = TwitterStream(auth=auth, secure=True)
 
 #-----------------------------------------------------------------------
 # iterate over tweets matching this filter text
 # IMPORTANT! this is not quite the same as a standard twitter search
 #  - see https://dev.twitter.com/streaming/overview
 #-----------------------------------------------------------------------
-tweet_iter = stream.statuses.filter(track = "social")
+tweet_iter = stream.statuses.filter(track="social")
 
 for tweet in tweet_iter:
     #-----------------------------------------------------------------------

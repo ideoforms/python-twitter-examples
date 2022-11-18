@@ -15,10 +15,10 @@ print("2. When you have created the application, enter:")
 print("   your application name:", end=' ')
 app_name = input()
 
-print("   your consumer key:", end=' ')
+print("   your Consumer API key:", end=' ')
 consumer_key = input()
 
-print("   your consumer secret:", end=' ')
+print("   your Consumer API secret key:", end=' ')
 consumer_secret = input()
 
 print()

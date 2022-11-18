@@ -12,22 +12,23 @@ from twitter import *
 # load our API credentials 
 #-----------------------------------------------------------------------
 import sys
+
 sys.path.append(".")
 import config
 
 #-----------------------------------------------------------------------
 # create twitter API object
 #-----------------------------------------------------------------------
-twitter = Twitter(auth = OAuth(config.access_key,
-                  config.access_secret,
-                  config.consumer_key,
-                  config.consumer_secret))
+twitter = Twitter(auth=OAuth(config.access_key,
+                             config.access_secret,
+                             config.consumer_key,
+                             config.consumer_secret))
 
 #-----------------------------------------------------------------------
 # request my home timeline
 # twitter API docs: https://dev.twitter.com/rest/reference/get/statuses/home_timeline
 #-----------------------------------------------------------------------
-statuses = twitter.statuses.home_timeline(count = 50)
+statuses = twitter.statuses.home_timeline(count=50)
 print(statuses)
 
 #-----------------------------------------------------------------------

@@ -11,16 +11,17 @@ from twitter import *
 # load our API credentials
 #-----------------------------------------------------------------------
 import sys
+
 sys.path.append(".")
 import config
 
 #-----------------------------------------------------------------------
 # create twitter API object
 #-----------------------------------------------------------------------
-twitter = Twitter(auth = OAuth(config.access_key,
-                  config.access_secret,
-                  config.consumer_key,
-                  config.consumer_secret))
+twitter = Twitter(auth=OAuth(config.access_key,
+                             config.access_secret,
+                             config.consumer_key,
+                             config.consumer_secret))
 
 #-----------------------------------------------------------------------
 # retrieve global trends.
@@ -28,7 +29,7 @@ twitter = Twitter(auth = OAuth(config.access_key,
 #   http://developer.yahoo.com/geo/geoplanet/
 # twitter API docs: https://dev.twitter.com/rest/reference/get/trends/place
 #-----------------------------------------------------------------------
-results = twitter.trends.place(_id = 23424975)
+results = twitter.trends.place(_id=23424975)
 
 print("UK Trends")
 

@@ -26,6 +26,7 @@ from email.utils import parsedate
 # load our API credentials
 #-----------------------------------------------------------------------
 import sys
+
 sys.path.append(".")
 import config
 
@@ -36,12 +37,12 @@ auth = OAuth(config.access_key,
              config.access_secret,
              config.consumer_key,
              config.consumer_secret)
-stream = TwitterStream(auth = auth, secure = True)
+stream = TwitterStream(auth=auth, secure=True)
 
 #-----------------------------------------------------------------------
 # iterate over tweets matching this filter text
 #-----------------------------------------------------------------------
-tweet_iter = stream.statuses.filter(track = search_term)
+tweet_iter = stream.statuses.filter(track=search_term)
 
 pattern = re.compile("%s" % search_term, re.IGNORECASE)
 
@@ -53,7 +54,7 @@ for tweet in tweet_iter:
     timetext = strftime("%H:%M:%S", timestamp)
 
     # colour our tweet's time, user and text
-    time_colored = colored(timetext, color = "white", attrs = [ "bold" ])
+    time_colored = colored(timetext, color="white", attrs=["bold"])
     user_colored = colored(tweet["user"]["screen_name"], "green")
     text_colored = tweet["text"]
 
@@ -62,7 +63,7 @@ for tweet in tweet_iter:
 
     # add some indenting to each line and wrap the text nicely
     indent = " " * 11
-    text_colored = fill(text_colored, 80, initial_indent = indent, subsequent_indent = indent)
+    text_colored = fill(text_colored, 80, initial_indent=indent, subsequent_indent=indent)
 
     # now output our tweet
     print("(%s) @%s" % (time_colored, user_colored))
