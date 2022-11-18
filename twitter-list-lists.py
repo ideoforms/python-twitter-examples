@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 #-----------------------------------------------------------------------
 # twitter-list-lists
@@ -16,6 +16,7 @@ users = ["ideoforms", "hrtbps", "mocost"]
 # load our API credentials 
 #-----------------------------------------------------------------------
 import sys
+import pprint
 
 sys.path.append(".")
 import config
@@ -31,7 +32,6 @@ twitter = Twitter(auth=OAuth(config.access_key,
 #-----------------------------------------------------------------------
 # for each of our users in turn...
 #-----------------------------------------------------------------------
-import pprint
 
 for user in users:
     print("@%s" % (user))
