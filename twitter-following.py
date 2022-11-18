@@ -1,8 +1,8 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 #-----------------------------------------------------------------------
-# twitter-friends
-#  - lists all of a given user's friends (ie, followees)
+# twitter-following
+#  - lists all of the accounts that a given user is following
 #-----------------------------------------------------------------------
 
 from twitter import *
@@ -39,7 +39,7 @@ query = twitter.friends.ids(screen_name=username)
 # note that the twitter API will NOT immediately give us any more 
 # information about friends except their numeric IDs...
 #-----------------------------------------------------------------------
-print("Found %d friends\n" % (len(query["ids"])))
+print("Following %d accounts\n" % (len(query["ids"])))
 
 #-----------------------------------------------------------------------
 # now we loop through them to pull out more info, in blocks of 100.
@@ -60,6 +60,6 @@ for n in range(0, len(query["ids"]), 100):
 
     for user in subquery:
         #-----------------------------------------------------------------------
-        # now print out user info, starring any users that are Verified.
+        # print out user information
         #-----------------------------------------------------------------------
-        print(" [%s] %s - %s" % ("*" if user["verified"] else " ", user["screen_name"], user["location"]))
+        print(" - %s (%s)" % (user["screen_name"], user["location"]))
